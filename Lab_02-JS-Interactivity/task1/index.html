@@ -1,13 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quizs</title>
+  <meta charset="UTF-8">
+  <title>Dynamic Quiz</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      background-color: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+      margin: 0;
+    }
+    
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 100%;
+    }
+    
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+    }
+    
+    .question { 
+      margin-bottom: 20px;
+    }
+    
+    label {
+      color: #555;
+      font-weight: 500;
+    }
+    
+    #result { 
+      font-weight: bold; 
+      margin-top: 25px;
+      padding: 15px;
+      background-color: #e8f4f8;
+      border-radius: 5px;
+      color: #0056b3;
+    }
+    
+    button { 
+      margin-top: 15px;
+      margin-right: 10px;
+      padding: 10px 20px;
+      background-color: #0056b3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    
+    button:hover {
+      background-color: #003d82;
+    }
+    
+    input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+    
+    input:focus {
+      outline: none;
+      border-color: #0056b3;
+      box-shadow: 0 0 5px rgba(0, 86, 179, 0.3);
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <h2>JavaScript Quiz</h2>
+
     <div class="question">
-        
+      <label>1. What does DOM stand for?</label><br>
+      <input type="text" id="q1" placeholder="Answer here">
     </div>
+
+    <div class="question">
+      <label>2. Which keyword is used to declare a variable in JavaScript?</label><br>
+      <input type="text" id="q2" placeholder="Answer here">
+    </div>
+
+    <div class="question">
+      <label>3. What symbol is used for comments in JavaScript (single line)?</label><br>
+      <input type="text" id="q3" placeholder="Answer here">
+    </div>
+
+    <button onclick="checkAnswers()">Submit Quiz</button>
+    <button onclick="resetQuiz()">Reset Quiz</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+
+    const answers = {
+      q1: "Document Object Model",
+      q2: "var",
+      q3: "//"
+    };
+
+    function checkAnswers() {
+       let score = 0;
+       
+       if(document.getElementById("q1").value.trim().toLowerCase() == answers.q1.toLowerCase()){
+        score++;
+       }
+       if(document.getElementById("q2").value.trim().toLowerCase() == answers.q2.toLowerCase()){
+        score++;
+       }
+       if(document.getElementById("q3").value.trim().toLowerCase() == answers.q3.toLowerCase()){
+        score++;
+       }
+
+      const resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = `You scored ${score} out of 3.`;
+
+      if (score === 3) {
+        resultDiv.innerHTML += "<br>Excellent work!";
+      } else if (score === 2) {
+        resultDiv.innerHTML += "<br>Good job, but you can do better!";
+      } else {
+        resultDiv.innerHTML += "<br>Keep practicing!";
+      }
+    }
+
+    // Reset Quiz function
+    function resetQuiz() {
+      document.getElementById("q1").value = "";
+      document.getElementById("q2").value = "";
+      document.getElementById("q3").value = "";
+      document.getElementById("result").innerHTML = "";
+    }
+  </script>
 </body>
 </html>
