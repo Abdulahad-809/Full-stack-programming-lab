@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shopping System</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 20px;
+    }
+    .output {
+        background-color: #f0f0f0;
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 20px;
+
+    }
+    h2 {
+        color: #333;
+    }
+    pre {
+        background-color: #fff;
+        padding: 10px;
+        border-left: 4px solid #007bff;
+        overflow-x: auto;
+    }
+
+    .container {
+        background: white;
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .container h1 {
+        text-align: center;
+        color: #333;
+    }
+    
+</style>
+<body>
+    <div class="container">
+        <h1>Online Shopping Cart</h1>
+        <div id="output"></div>
+    </div>
+</body>
+<script>
+    let cart = [];
+    function addToCart(...items) {
+        
+        console.log('Items added to cart:', items);
+        cart = [...cart, ...items];
+
+        let cloneCart = [...cart];
+        const [firstItem, ...remainingItems] = cloneCart;
+
+        console.log('Cart Summary:');
+        console.log('Total Items:', cart.length);
+        console.log('First Item:', firstItem);
+        console.log('All Items in Cart:', cart);
+        console.log('Remaining Items (excluding first):', remainingItems);
+
+        const output = document.getElementById('output');
+        output.innerHTML = `
+            <h2>Cart Summary</h2>
+            <p><strong>Total Items:</strong> ${cart.length}</p>
+            <p><strong>First Item:</strong> ${firstItem || 'No items in cart'}</p>
+            <h3>All Items in Cart:</h3>
+            <pre>${JSON.stringify(cart, null, 2)}</pre>
+            <h3>Remaining Items (excluding first):</h3>
+            <pre>${JSON.stringify(remainingItems, null, 2)}</pre>
+        `;
+
+
+    }
+    addToCart('Laptop', 'Smartphone', 'Headphones');
+    addToCart('Tablet', 'Smartwatch');
+</script>
+</html>
