@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .student-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .student-card h3 {
+            color: #0066cc;
+        }
+        .student-card p {
+            margin: 5px 0;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Management System</h1>
+    <div id="studentsContainer"></div>
+
+    <script>
+        class Student {
+            constructor(id, name, semester, courses) {
+                this.id = id;
+                this.name = name;
+                this.semester = semester;
+                this.courses = courses;
+            }
+
+            getDetails() {
+                return `
+                    <div class="student-card">
+                        <h3>${this.name}</h3>
+                        <p><strong>ID:</strong> ${this.id}</p>
+                        <p><strong>Semester:</strong> ${this.semester}</p>
+                        <p><strong>Courses:</strong> ${this.courses.join(', ')}</p>
+                    </div>
+                `;
+            }
+        }
+
+        const student1 = new Student(101, 'Shiraz Ahmad Khan', 3, ['JavaScript', 'HTML', 'CSS']);
+        const student2 = new Student(102, 'Abdul Ahad', 2, ['Python', 'Database', 'React']);
+        const student3 = new Student(103, 'Ali Raza', 4, ['Node.js', 'Angular', 'MongoDB']);
+
+        let students = [student1, student2, student3];
+        let containerElement = document.getElementById('studentsContainer');
+
+        students.forEach(student => {
+            containerElement.innerHTML += student.getDetails();
+        });
+    </script>
+</body>
+</html>
