@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Data Loader</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 20px;
+    }
+    h1 {
+        color: #333;
+    }
+    #output {
+        background-color: #f0f0f0;
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+</style>
+<body>
+    <div>
+        <h1>Async Data Loader</h1>
+        <div id="output">Loading...</div>
+    </div>
+</body>
+<script>
+    function fetchUsers() {
+        let p = new Promise(function(resolve, reject) {
+            let success = true;
+            setTimeout(() => {
+                if(success){
+                    resolve([
+                        { id: 1, name: 'Shraz' },
+                        { id: 2, name: 'Rehan' },
+                        { id: 3, name: 'Ahad' }
+                    ]);
+                } else {
+                    reject('Failed to fetch users');
+                }}
+            , 2000);
+        })
+        p.then(users => {
+            document.getElementById('output').innerHTML = '<p style="color: green;">Users fetched successfully:</p>';
+            users.forEach(user => {
+                document.getElementById('output').innerHTML += `<p>${user.name}</p>`;
+            });
+        }).catch(error => {
+            document.getElementById('output').innerHTML = `<p style="color: red;">${error}</p>`;
+        });
+    }
+    fetchUsers();
+</script>
+</html>
