@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tabbed Content with Smooth Scroll</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial;
+      max-width: 900px;
+      margin: 40px auto;
+      line-height: 1.6;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .tab {
+      padding: 10px 18px;
+      background: #0078d4;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .tab.active {
+      background: #005a9e;
+    }
+
+    /* Content sections */
+    .section {
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 40px;
+      display: none;
+    }
+
+    .section h3 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Tabbed Content with Smooth Scroll</h2>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <div class="tab active" data-target="#sec1">Overview</div>
+    <div class="tab" data-target="#sec2">Features</div>
+    <div class="tab" data-target="#sec3">Examples</div>
+    <div class="tab" data-target="#sec4">About</div>
+    <div class="tab" data-target="#sec5">Contact</div>
+  </div>
+
+  <!-- Sections -->
+  <div id="sec1" class="section" style="display:block;">
+    <h3>Overview</h3>
+    <p>This is the overview section. It becomes visible when you click the Overview tab.</p>
+  </div>
+
+  <div id="sec2" class="section">
+    <h3>Features</h3>
+    <p>This section lists features. It fades in smoothly when selected.</p>
+  </div>
+
+  <div id="sec3" class="section">
+    <h3>Examples</h3>
+    <p>Here are some examples. Smooth scroll brings you here automatically.</p>
+  </div>
+
+  <div id="sec4" class="section">
+    <h3>About</h3>
+    <p>This is the About section. Tabs switch content dynamically.</p>
+  </div>
+
+  <div id="sec5" class="section">
+    <h3>Contact</h3>
+    <p>This is the Contact section. Smooth animations make navigation easy.</p>
+  </div>
+
+  <script>
+    $(function () {
+
+      $(".tab").on("click", function () {
+
+        // Remove active class from all tabs
+        $(".tab").removeClass("active");
+
+        // Add active class to clicked tab
+        $(this).addClass("active");
+
+        // Get target section ID
+        const target = $(this).data("target");
+
+        // Hide all sections
+        $(".section").hide();
+
+        // Fade in selected section
+        $(target).fadeIn(300);
+
+        // Smooth scroll to section
+        $("html, body").animate({
+          scrollTop: $(target).offset().top - 20
+        }, 500);
+      });
+
+    });
+  </script>
+
+</body>
+</html>

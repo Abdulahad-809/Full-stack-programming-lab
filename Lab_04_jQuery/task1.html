@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Dynamic List Manager</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 24px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .manager {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    input[type="text"] {
+      flex: 1;
+      padding: 8px;
+      font-size: 16px;
+    }
+    button {
+      padding: 8px 12px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    ul.item-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    ul.item-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 12px;
+      border-bottom: 1px solid #eee;
+      transition: background-color 0.12s ease;
+    }
+    ul.item-list li:last-child {
+      border-bottom: none;
+    }
+    /* Hover highlight */
+    ul.item-list li:hover {
+      background: #f0f8ff;
+    }
+    .item-text {
+      margin-right: 12px;
+      word-break: break-word;
+    }
+    .delete {
+      background: #ff4d4f;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 4px;
+    }
+    .delete:active { transform: translateY(1px); }
+    .empty-note {
+      color: #666;
+      padding: 12px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Dynamic List Manager</h2>
+
+  <div class="manager">
+    <input id="itemInput" type="text" placeholder="Type an item and press Add" />
+    <button id="addBtn">Add</button>
+  </div>
+
+  <ul id="list" class="item-list" aria-live="polite">
+    <li class="empty-note">No items yet. Add one above.</li>
+  </ul>
+
+  <script>
+    $(function () {
+      const $input = $('#itemInput');
+      const $addBtn = $('#addBtn');
+      const $list = $('#list');
+
+      // Helper to show empty note when list is empty
+      function checkEmptyNote() {
+        if ($list.children('li').length === 0) {
+          $list.append('<li class="empty-note">No items yet. Add one above.</li>');
+        } else {
+          $list.children('.empty-note').remove();
+        }
+      }
+
+      // Add item on button click or Enter key
+      function addItem() {
+        const text = $input.val().trim();
+        if (!text) return; // ignore empty
+        // Create list item HTML
+        const itemHtml = `
+          <li>
+            <span class="item-text"></span>
+            <button class="delete" aria-label="Delete item">Delete</button>
+          </li>`;
+        // Append new item and set text
+        $list.append(itemHtml);
+        // Set the text of the last appended item
+        $list.children('li').last().find('.item-text').text(text);
+        $input.val('').focus();
+        checkEmptyNote();
+      }
+
+      // Click handler for Add button
+      $addBtn.on('click', addItem);
+
+      // Enter key adds item
+      $input.on('keydown', function (e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          addItem();
+        }
+      });
+
+      // Event delegation for Delete buttons (works for dynamic items)
+      $list.on('click', '.delete', function () {
+        $(this).closest('li').remove();
+        checkEmptyNote();
+      });
+
+      
+      checkEmptyNote();
+    });
+  </script>
+
+</body>
+</html>

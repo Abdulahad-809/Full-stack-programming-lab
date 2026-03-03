@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Form Validation</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial;
+      max-width: 600px;
+      margin: 40px auto;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 15px;
+    }
+
+    /* Error highlight */
+    .error {
+      border-color: red !important;
+      background: #ffe5e5;
+    }
+
+    .error-msg {
+      color: red;
+      font-size: 13px;
+      display: none;
+    }
+
+    /* Success message */
+    #success {
+      margin-top: 20px;
+      padding: 12px;
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      border-radius: 4px;
+      display: none;
+    }
+
+    button {
+      padding: 10px 18px;
+      background: #0078d4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Interactive Form Validation</h2>
+
+  <form id="myForm">
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" id="name">
+      <div class="error-msg">Name is required</div>
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input type="text" id="email">
+      <div class="error-msg">Enter a valid email</div>
+    </div>
+
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="password">
+      <div class="error-msg">Password must be at least 6 characters</div>
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <div id="success">Form submitted successfully!</div>
+
+  <script>
+    $(function () {
+
+      // Validate on blur
+      $("#name").on("blur", function () {
+        validateName();
+      });
+
+      $("#email").on("blur", function () {
+        validateEmail();
+      });
+
+      $("#password").on("blur", function () {
+        validatePassword();
+      });
+
+      // Validation functions
+      function validateName() {
+        const val = $("#name").val().trim();
+        if (val === "") {
+          showError("#name", "Name is required");
+          return false;
+        }
+        hideError("#name");
+        return true;
+      }
+
+      function validateEmail() {
+        const val = $("#email").val().trim();
+        const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!pattern.test(val)) {
+          showError("#email", "Enter a valid email");
+          return false;
+        }
+        hideError("#email");
+        return true;
+      }
+
+      function validatePassword() {
+        const val = $("#password").val().trim();
+        if (val.length < 6) {
+          showError("#password", "Password must be at least 6 characters");
+          return false;
+        }
+        hideError("#password");
+        return true;
+      }
+
+      // Show error
+      function showError(selector, message) {
+        $(selector).addClass("error");
+        $(selector).siblings(".error-msg").text(message).fadeIn(150);
+      }
+
+      // Hide error
+      function hideError(selector) {
+        $(selector).removeClass("error");
+        $(selector).siblings(".error-msg").fadeOut(150);
+      }
+
+      // Submit handler (no page refresh)
+      $("#myForm").on("submit", function (e) {
+        e.preventDefault(); // stop page reload
+
+        const valid =
+          validateName() &
+          validateEmail() &
+          validatePassword();
+
+        if (valid) {
+          $("#success").fadeIn(300).delay(2000).fadeOut(300);
+          $("#myForm")[0].reset();
+        }
+      });
+
+    });
+  </script>
+
+</body>
+</html>
