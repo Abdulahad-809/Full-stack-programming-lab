@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Form Validation</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 10px;
+        }
+        input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input.error {
+            border-color: #dc3545;
+            background-color: #ffecec;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        button:disabled {
+            background-color: #a0a0a0;
+            cursor: not-allowed;
+        }
+        span.error {
+            color: #dc3545;
+            font-size: 0.9rem;
+        }
+        #successMessage {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            border-radius: 4px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Registration Form</h1>
+    <form id="regForm" novalidate>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" />
+        <span class="error" id="nameError"></span>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" />
+        <span class="error" id="emailError"></span>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" />
+        <span class="error" id="passwordError"></span>
+
+        <button type="submit" id="submitButton">Submit</button>
+    </form>
+    <div id="successMessage">Form submitted successfully!</div>
+
+    <script>
+        $(function() {
+            function validateField(id, validator, message) {
+                const $field = $(id);
+                const val = $field.val().trim();
+                if (!validator(val)) {
+                    $field.addClass('error');
+                    $(id + 'Error').text(message);
+                    return false;
+                } else {
+                    $field.removeClass('error');
+                    $(id + 'Error').text('');
+                    return true;
+                }
+            }
+
+            $('#name').on('blur', function() {
+                validateField('#name', v => v.length >= 2, 'Name must be at least 2 characters.');
+            });
+            $('#email').on('blur', function() {
+                validateField('#email', v => /\S+@\S+\.\S+/.test(v), 'Enter a valid email.');
+            });
+            $('#password').on('blur', function() {
+                validateField('#password', v => v.length >= 6, 'Password must be at least 6 characters.');
+            });
+
+            $('#regForm').submit(function(e) {
+                e.preventDefault();
+                const validName = validateField('#name', v => v.length >= 2, 'Name must be at least 2 characters.');
+                const validEmail = validateField('#email', v => /\S+@\S+\.\S+/.test(v), 'Enter a valid email.');
+                const validPassword = validateField('#password', v => v.length >= 6, 'Password must be at least 6 characters.');
+                if (validName && validEmail && validPassword) {
+                    $('#successMessage').fadeIn();
+                } else {
+                    $('#successMessage').fadeOut();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

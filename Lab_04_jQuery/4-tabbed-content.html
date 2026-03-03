@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabbed Content</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #tabs {
+            display: flex;
+            background-color: #007BFF;
+            overflow-x: auto;
+        }
+        #tabs button {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        #tabs button.active, #tabs button:hover {
+            background-color: #0056b3;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            height: 300px;
+            background-color: #f4f4f4;
+            box-sizing: border-box;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="tabs">
+        <button data-target="#section1" class="active">Section 1</button>
+        <button data-target="#section2">Section 2</button>
+        <button data-target="#section3">Section 3</button>
+        <button data-target="#section4">Section 4</button>
+        <button data-target="#section5">Section 5</button>
+    </div>
+
+    <div id="section1" class="tab-content active">
+        <h2>Section 1</h2>
+        <p>Content for section one. Lorem ipsum dolor sit amet.</p>
+    </div>
+    <div id="section2" class="tab-content">
+        <h2>Section 2</h2>
+        <p>Content for section two. Consectetur adipiscing elit.</p>
+    </div>
+    <div id="section3" class="tab-content">
+        <h2>Section 3</h2>
+        <p>Content for section three. Integer nec odio. Praesent libero.</p>
+    </div>
+    <div id="section4" class="tab-content">
+        <h2>Section 4</h2>
+        <p>Content for section four. Sed cursus ante dapibus.</p>
+    </div>
+    <div id="section5" class="tab-content">
+        <h2>Section 5</h2>
+        <p>Content for section five. Nulla quis sem at nibh elementum imperdiet.</p>
+    </div>
+
+    <script>
+        $(function() {
+            $('#tabs button').click(function() {
+                const target = $(this).data('target');
+                $('#tabs button').removeClass('active');
+                $(this).addClass('active');
+
+                $('.tab-content.active').not(target).fadeOut(300, function() {
+                    $(this).removeClass('active');
+                    $(target).fadeIn(300).addClass('active');
+                });
+
+                $('html, body').animate({
+                    scrollTop: $(target).offset().top - $('#tabs').height()
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>

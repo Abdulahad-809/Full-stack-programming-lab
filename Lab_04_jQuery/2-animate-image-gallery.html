@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery Animated Image Gallery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #gallery {
+            width: 600px;
+            position: relative;
+            text-align: center;
+        }
+        #gallery img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        #caption {
+            margin-top: 10px;
+            font-size: 1.1rem;
+            color: #333;
+        }
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        #prev {
+            left: -60px;
+        }
+        #next {
+            right: -60px;
+        }
+    </style>
+</head>
+<body>
+    <div id="gallery">
+        <button class="nav-btn" id="prev">&lt;</button>
+        <img id="mainImage" src="" alt="Gallery Image" />
+        <p id="caption"></p>
+        <button class="nav-btn" id="next">&gt;</button>
+    </div>
+
+    <script>
+        $(function() {
+            const images = [
+                {
+                    src: 'https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=600&q=80',
+                    caption: 'City skyline at dusk'
+                },
+                {
+                    src: 'https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=600&q=80',
+                    caption: 'Snowy mountain peak'
+                },
+                {
+                    src: 'https://images.unsplash.com/photo-1506765515384-028b60a970df?auto=format&fit=crop&w=600&q=80',
+                    caption: 'Beach sunrise'
+                }
+            ];
+            let current = 0;
+
+            function showImage(index) {
+                const item = images[index];
+                $('#mainImage')
+                    .fadeOut(400)
+                    .attr('src', item.src)
+                    .promise()
+                    .done(function() {
+                        $('#mainImage').fadeIn(400);
+                    });
+                $('#caption')
+                    .fadeOut(200)
+                    .text(item.caption)
+                    .fadeIn(200);
+            }
+
+            $('#next').click(function() {
+                current = (current + 1) % images.length;
+                showImage(current);
+            });
+
+            $('#prev').click(function() {
+                current = (current - 1 + images.length) % images.length;
+                showImage(current);
+            });
+
+            // initialize
+            showImage(current);
+        });
+    </script>
+</body>
+</html>
