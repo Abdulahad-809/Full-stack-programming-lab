@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Box Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #fafafa;
+            color: #333;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .controls input[type="text"] {
+            width: 120px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .controls button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        .controls button:hover {
+            background-color: #0056b3;
+        }
+
+        #boxContainer {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .color-box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ccc;
+        }
+
+        #info {
+            margin-bottom: 15px;
+            font-size: 0.9em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Color Box Generator</h1>
+    <div id="info"></div>
+
+    <div class="controls">
+        <div>
+            <input type="text" id="color1" placeholder="Color 1" />
+            <button onclick="addColor('color1')">Add</button>
+        </div>
+        <div>
+            <input type="text" id="color2" placeholder="Color 2" />
+            <button onclick="addColor('color2')">Add</button>
+        </div>
+        <div>
+            <input type="text" id="color3" placeholder="Color 3" />
+            <button onclick="addColor('color3')">Add</button>
+        </div>
+        <div>
+            <button id="clearBtn" onclick="clearBoxes()">Clear All</button>
+        </div>
+    </div>
+
+    <div id="boxContainer"></div>
+
+    <script>
+        // display browser/window information (bonus)
+        function updateInfo() {
+            const info = document.getElementById('info');
+            info.textContent = `Window: ${window.innerWidth} x ${window.innerHeight}`;
+        }
+
+        window.addEventListener('resize', updateInfo);
+        updateInfo();
+
+        // generic function to read color input and append box
+        function addColor(inputId) {
+            const input = document.getElementById(inputId);
+            const color = input.value.trim();
+            if (!color) return;
+            const boxContainer = document.getElementById('boxContainer');
+            const box = document.createElement('div');
+            box.className = 'color-box';
+            box.style.backgroundColor = color;
+            boxContainer.appendChild(box);
+            input.value = '';
+        }
+
+        function clearBoxes() {
+            const container = document.getElementById('boxContainer');
+            container.innerHTML = ''; // remove all children
+        }
+    </script>
+</body>
+</html>
