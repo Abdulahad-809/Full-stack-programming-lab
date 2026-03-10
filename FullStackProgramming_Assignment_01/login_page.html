@@ -8,7 +8,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; font-size: 13px; color: #333; background: #fff; }
+    body { font-family: Arial, sans-serif; font-size: 13px; color: #333; background: #d7dbdd; }
+    .site-shell { width: min(1150px, calc(100% - 28px)); margin: 18px auto 40px; background: #fff; box-shadow: 0 0 0 1px rgba(0,0,0,0.04); }
 
     /* TOP BAR */
     .top-bar { background: #fff; border-bottom: 1px solid #e0e0e0; padding: 5px 0; font-size: 12px; }
@@ -102,6 +103,7 @@
   </style>
 </head>
 <body>
+<div class="site-shell">
 
 <!-- TOP BAR -->
 <div class="top-bar">
@@ -109,9 +111,9 @@
     <div class="d-flex justify-content-between align-items-center">
       <div class="support-text">Call for Customer support: <a href="tel:02038989565">020 38989565</a></div>
       <div class="top-links">
-        <a href="#">My Account</a>
-        <a href="#">Wishlist</a>
-        <a href="#">To Checkout</a>
+        <a href="login_page.html">My Account</a>
+        <a href="my-account.html">Wishlist</a>
+        <a href="login_page.html">To Checkout</a>
       </div>
     </div>
   </div>
@@ -141,9 +143,9 @@
   <div class="container-fluid px-3">
     <div class="d-flex justify-content-between align-items-center">
       <div class="nav-links">
-        <a href="#">CATAGORY</a>
-        <a href="#">BRAND</a>
-        <a href="#">INFO</a>
+        <a href="category.html">CATAGORY</a>
+        <a href="about.html">BRAND</a>
+        <a href="contact.html">INFO</a>
       </div>
       <div class="search-area">
         <input type="text" id="searchInput" placeholder="Search" />
@@ -288,19 +290,19 @@
       </div>
       <div class="col-md-3 footer-col mb-3">
         <h5>Information</h5>
-        <a href="#">ABOUT US</a>
-        <a href="#">CUSTOMER SERVICE</a>
-        <a href="#">PRIVACY POLICY</a>
-        <a href="#">SITE MAP</a>
-        <a href="#">SEARCH TERMS</a>
-        <a href="#">CONATACT US</a>
-        <a href="#">ABOUT US</a>
+        <a href="about.html">ABOUT US</a>
+        <a href="contact.html">CUSTOMER SERVICE</a>
+        <a href="about.html">PRIVACY POLICY</a>
+        <a href="category.html">SITE MAP</a>
+        <a href="category.html">SEARCH TERMS</a>
+        <a href="contact.html">CONATACT US</a>
+        <a href="about.html">ABOUT US</a>
       </div>
       <div class="col-md-3 footer-col mb-3">
         <h5>My Account</h5>
         <a href="login_page.html">SIGN IN</a>
-        <a href="#">VIEW CART</a>
-        <a href="#">MY WISHLIST</a>
+        <a href="category.html">VIEW CART</a>
+        <a href="my-account.html">MY WISHLIST</a>
       </div>
       <div class="col-md-3 footer-col mb-3">
         <h5>Signup For A News Letter</h5>
@@ -399,7 +401,7 @@
       valid = false;
     }
     if (valid) {
-      window.location.href = 'index.html';
+      window.location.href = 'my-account.html';
     }
   });
 
@@ -439,5 +441,6 @@
   );
 
 </script>
+</div>
 </body>
 </html>
