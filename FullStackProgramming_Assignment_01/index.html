@@ -462,7 +462,7 @@
         <h5>Contact Us</h5>
         <p>yoursitename.com</p>
         <p>CALL 24/7: 888 · 201 · 8899</p>
-        <p>Your Address:<br>Street<br>State &amp; Zip Code<br>City &amp; Country<br>Email: servicemail@yoursitename.com</p>
+        <p>Your Address:<br>Street<br>State &amp; Zip Code<br>City &amp; Country<br>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="24574156524d474149454d48645d4b5156574d50414a4549410a474b49">[email&#160;protected]</a></p>
         <div class="social-icons">
           <a href="#" class="social-icon si-tw"><i class="fab fa-twitter"></i></a>
           <a href="#" class="social-icon si-fb"><i class="fab fa-facebook-f"></i></a>
@@ -507,7 +507,7 @@
   <div class="footer-bottom">© 2014 Hottubspaservice.com. All Rights Reserved.</div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 <script>
   // ── SLIDER ──
@@ -530,8 +530,7 @@
 
   // ── ADD TO CART ──
   $('.btn-add-cart').on('click', function() {
-    const name = $(this).closest('.product-card').find('.prod-name').text();
-    alert('"' + name + '" has been added to your cart!');
+    window.location.href = 'product_detail.html';
   });
 
   // ── SEARCH ──

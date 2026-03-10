@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HotSpring - Emerald Bay XL TV DVD Stereo Hot Tub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; font-size: 13px; color: #333; background: #fff; }
+
+    /* TOP BAR */
+    .top-bar { background: #fff; border-bottom: 1px solid #e0e0e0; padding: 5px 0; font-size: 12px; }
+    .top-bar .support-text a { color: #c00; text-decoration: none; font-weight: bold; }
+    .top-bar .top-links a { color: #555; text-decoration: none; margin-left: 12px; font-size: 12px; }
+    .top-bar .top-links a:hover { color: #c00; }
+
+    /* HEADER */
+    .main-header { background: #fff; padding: 12px 0; border-bottom: 1px solid #ddd; }
+    .logo-text { font-size: 30px; font-weight: 900; color: #1a1a1a; letter-spacing: 1px; line-height: 1; font-style: italic; }
+    .logo-text sup { font-size: 10px; color: #555; font-style: normal; }
+    .logo-sub { color: #c00; font-size: 13px; font-weight: bold; letter-spacing: 2px; display: block; }
+    .cart-btn { background: #555; color: #fff; border: none; padding: 7px 14px; font-size: 12px; display: flex; align-items: center; gap: 6px; cursor: pointer; }
+    .cart-btn .cart-icon { color: #e44; font-size: 16px; }
+    .cart-dropdown { border: 1px solid #ccc; background: #fff; padding: 5px 10px; font-size: 12px; cursor: pointer; }
+
+    /* NAV BAR */
+    .main-nav { background: #cc0000; padding: 0; }
+    .main-nav .nav-links { display: flex; align-items: center; height: 42px; }
+    .main-nav .nav-links a { color: #fff; text-decoration: none; padding: 0 22px; font-size: 13px; font-weight: bold; height: 100%; display: flex; align-items: center; border-right: 1px solid rgba(255,255,255,0.3); }
+    .main-nav .nav-links a:first-child { border-left: 1px solid rgba(255,255,255,0.3); }
+    .main-nav .nav-links a:hover { background: rgba(0,0,0,0.15); }
+    .search-area { display: flex; align-items: center; height: 42px; }
+    .search-area input { border: none; outline: none; padding: 6px 12px; font-size: 13px; width: 260px; height: 32px; }
+    .search-area button { background: #444; color: #fff; border: none; padding: 6px 18px; font-size: 13px; font-weight: bold; height: 32px; cursor: pointer; letter-spacing: 1px; }
+    .search-area button:hover { background: #222; }
+
+    /* MAIN CONTENT */
+    .main-content { background: #f2f2f0; padding: 20px 0 30px; }
+
+    /* PRODUCT TITLE */
+    .product-title-bar { background: #fff; border: 1px solid #ddd; padding: 14px 16px 10px; margin-bottom: 14px; }
+    .product-title-bar h1 { font-size: 18px; font-weight: bold; color: #222; margin-bottom: 4px; }
+    .product-title-bar .model-info { font-size: 11px; color: #888; }
+    .model-info a { color: #c00; text-decoration: none; }
+
+    /* PRODUCT MAIN BOX */
+    .product-main { background: #fff; border: 1px solid #ddd; padding: 16px; margin-bottom: 14px; }
+
+    /* IMAGE GALLERY */
+    .main-img-wrap {
+      border: 1px solid #ddd; background: #fafafa;
+      display: flex; align-items: center; justify-content: center;
+      height: 240px; overflow: hidden; margin-bottom: 8px; cursor: zoom-in;
+    }
+    .main-img-wrap img { max-width: 100%; max-height: 240px; object-fit: contain; }
+    .thumb-row { display: flex; gap: 6px; justify-content: center; margin-bottom: 6px; }
+    .thumb-item {
+      width: 64px; height: 48px; border: 2px solid #ddd; cursor: pointer;
+      overflow: hidden; display: flex; align-items: center; justify-content: center;
+      background: #fafafa;
+    }
+    .thumb-item.active { border-color: #c00; }
+    .thumb-item img { max-width: 100%; max-height: 48px; object-fit: contain; }
+    .zoom-hint { text-align: center; font-size: 11px; color: #888; }
+    .zoom-hint a { color: #c00; text-decoration: none; }
+
+    /* PRODUCT INFO */
+    .star-row { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
+    .stars { color: #f90; font-size: 14px; }
+    .review-link { color: #c00; font-size: 12px; text-decoration: none; }
+    .retail-price { font-size: 12px; color: #777; text-decoration: line-through; margin-bottom: 2px; }
+    .sale-label { font-size: 11px; color: #c00; font-weight: bold; margin-bottom: 2px; }
+    .sale-price { font-size: 26px; font-weight: 900; color: #c00; margin-bottom: 4px; }
+    .low-price { font-size: 11px; color: #c00; margin-bottom: 12px; }
+    .low-price i { margin-right: 3px; }
+
+    .spec-table { width: 100%; margin-bottom: 12px; }
+    .spec-table tr td { font-size: 12px; padding: 2px 0; vertical-align: top; }
+    .spec-table tr td:first-child { color: #555; width: 140px; }
+    .spec-table tr td:last-child { font-weight: bold; color: #222; }
+
+    .stock-line { color: #2a8a2a; font-size: 12px; font-weight: bold; margin-bottom: 10px; }
+
+    .btn-add-cart-big {
+      background: #cc0000; color: #fff; border: none; padding: 10px 20px;
+      font-size: 13px; font-weight: bold; cursor: pointer; display: flex;
+      align-items: center; gap: 8px; text-transform: uppercase;
+    }
+    .btn-add-cart-big:hover { background: #a00; }
+
+    /* PRICE CALCULATOR */
+    .price-calc { background: #fff; border: 1px solid #ddd; padding: 14px; margin-bottom: 14px; }
+    .price-calc h4 { font-size: 14px; font-weight: bold; color: #222; margin-bottom: 12px; border-bottom: 1px solid #eee; padding-bottom: 6px; }
+    .calc-row { margin-bottom: 8px; }
+    .calc-row label { font-size: 11px; color: #555; display: block; margin-bottom: 2px; }
+    .calc-row select, .calc-row input {
+      width: 100%; border: 1px solid #ccc; padding: 4px 6px;
+      font-size: 12px; height: 26px; outline: none; background: #fff;
+    }
+    .total-price-box {
+      background: #f5f5f5; border: 1px solid #ddd; padding: 10px;
+      text-align: center; margin: 12px 0 10px;
+    }
+    .total-price-box .total-label { font-size: 12px; color: #555; }
+    .total-price-box .total-amount { font-size: 20px; font-weight: 900; color: #c00; }
+    .btn-calc-cart {
+      width: 100%; background: #cc0000; color: #fff; border: none;
+      padding: 9px; font-size: 13px; font-weight: bold; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
+    .btn-calc-cart:hover { background: #a00; }
+
+    /* DOWNLOAD RESOURCES */
+    .download-box { background: #fff; border: 1px solid #ddd; padding: 14px; }
+    .download-box h4 { font-size: 14px; font-weight: bold; color: #222; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 6px; }
+    .download-link { display: flex; align-items: center; gap: 6px; color: #c00; font-size: 12px; text-decoration: none; margin-bottom: 6px; }
+    .download-link:hover { text-decoration: underline; }
+    .pdf-reader { display: flex; align-items: center; gap: 6px; margin-top: 8px; }
+    .pdf-reader img { width: 32px; }
+    .pdf-reader span { font-size: 10px; color: #888; }
+
+    /* TABS */
+    .tabs-section { background: #fff; border: 1px solid #ddd; margin-bottom: 14px; }
+    .tab-nav { display: flex; border-bottom: 1px solid #ddd; }
+    .tab-btn {
+      padding: 10px 18px; font-size: 13px; border: none; background: #f5f5f5;
+      cursor: pointer; border-right: 1px solid #ddd; color: #555;
+    }
+    .tab-btn.active { background: #fff; color: #222; font-weight: bold; border-bottom: 2px solid #fff; margin-bottom: -1px; }
+    .tab-btn:hover { background: #ebebeb; }
+    .tab-content { display: none; padding: 20px; }
+    .tab-content.active { display: block; }
+    .tab-content h3 { font-size: 14px; font-weight: bold; color: #222; margin-bottom: 10px; }
+    .tab-content h4 { font-size: 13px; font-weight: bold; color: #333; margin: 12px 0 6px; }
+    .tab-content p { font-size: 12px; color: #555; line-height: 1.7; margin-bottom: 10px; }
+    .tab-content .energy-row { font-size: 12px; color: #555; margin-bottom: 6px; }
+
+    /* QUICK SPECS TABLE */
+    .specs-tbl { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .specs-tbl tr:nth-child(even) { background: #f9f9f9; }
+    .specs-tbl td { padding: 6px 10px; border: 1px solid #eee; }
+    .specs-tbl td:first-child { font-weight: bold; color: #555; width: 200px; }
+
+    /* CUSTOMERS SECTION */
+    .customers-section { background: #fff; border: 1px solid #ddd; padding: 16px; margin-bottom: 14px; }
+    .customers-section h3 { font-size: 15px; font-weight: bold; color: #222; margin-bottom: 12px; }
+    .product-carousel { display: flex; align-items: center; }
+    .carousel-arrow { background: none; border: 1px solid #ccc; font-size: 18px; color: #aaa; cursor: pointer; padding: 4px 8px; }
+    .carousel-arrow:hover { color: #555; background: #f5f5f5; }
+    .product-items { display: flex; flex: 1; gap: 0; overflow: hidden; }
+    .product-item { flex: 1; text-align: left; padding: 8px 10px; border: 1px solid #eee; margin: 0 2px; background: #fff; min-width: 0; }
+    .product-item img { width: 64px; height: 64px; object-fit: contain; border: 1px solid #ddd; display: block; margin-bottom: 6px; }
+    .product-price { color: #c00; font-size: 13px; font-weight: bold; }
+    .product-name { font-size: 11px; color: #333; line-height: 1.3; }
+    .product-sku { font-size: 10px; color: #999; }
+
+    /* BRANDS BAR */
+    .brands-bar { background: #fff; border-top: 1px solid #e0e0e0; padding: 18px 0; }
+    .save-banner { background: linear-gradient(135deg, #f5a623, #e8760a); color: #fff; padding: 10px 14px; font-size: 11px; font-weight: bold; line-height: 1.3; text-align: center; border-radius: 3px; }
+    .save-banner .save-amount { font-size: 20px; font-weight: 900; display: block; }
+
+    /* FOOTER */
+    .main-footer { background: #2a2a2a; color: #aaa; padding: 36px 0 20px; }
+    .footer-col h5 { color: #fff; font-size: 13px; font-weight: bold; letter-spacing: 1px; margin-bottom: 14px; text-transform: uppercase; }
+    .footer-col p, .footer-col a { font-size: 12px; color: #aaa; text-decoration: none; display: block; margin-bottom: 5px; line-height: 1.5; }
+    .footer-col a:hover { color: #fff; }
+    .footer-col a { border-bottom: 1px solid #444; padding-bottom: 4px; }
+    .social-icons { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+    .social-icon { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #fff; text-decoration: none; border: none !important; }
+    .si-tw{background:#1da1f2;} .si-fb{background:#3b5998;} .si-li{background:#0077b5;}
+    .si-gp{background:#dd4b39;} .si-yt{background:#ff0000;} .si-pi{background:#bd081c;}
+    .newsletter-input { width: 100%; border: 1px solid #555; background: #3a3a3a; color: #ddd; padding: 6px 10px; font-size: 12px; margin-bottom: 10px; outline: none; }
+    .payment-icons { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 6px; }
+    .pay-icon { border-radius: 3px; padding: 3px 7px; font-size: 10px; font-weight: bold; display: flex; align-items: center; }
+    .footer-bottom { background: #1a1a1a; color: #777; text-align: center; font-size: 12px; padding: 10px 0; margin-top: 20px; }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="container-fluid px-3">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="support-text">Call for Customer support: <a href="tel:02038989565">020 38989565</a></div>
+      <div class="top-links">
+        <a href="login_page.html">My Account</a>
+        <a href="#">Wishlist</a>
+        <a href="#">To Checkout</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<div class="main-header">
+  <div class="container-fluid px-3">
+    <div class="d-flex justify-content-between align-items-center">
+      <div>
+        <div class="logo-text">HotSpring<sup>®</sup></div>
+        <span class="logo-sub">Portable Spas</span>
+      </div>
+      <div class="d-flex align-items-center gap-1">
+        <button class="cart-btn">
+          <span class="cart-icon"><i class="fa fa-shopping-cart"></i></span>
+          My Cart: &nbsp;0 Items (s)
+        </button>
+        <select class="cart-dropdown"><option>▾</option></select>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV BAR -->
+<div class="main-nav">
+  <div class="container-fluid px-3">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="nav-links">
+        <a href="#">CATAGORY</a>
+        <a href="#">BRAND</a>
+        <a href="#">INFO</a>
+      </div>
+      <div class="search-area">
+        <input type="text" id="searchInput" placeholder="Search"/>
+        <button onclick="doSearch()">SEARCH</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+  <div class="container-fluid px-3">
+
+    <!-- PRODUCT TITLE -->
+    <div class="product-title-bar">
+      <h1>Emerald Bay XL TV DVD Stereo Hot Tub with 90 Jets</h1>
+      <div class="model-info">
+        Abt Model: B22CS30SNS8 &nbsp;|&nbsp; UPC Code: 825225868729
+      </div>
+    </div>
+
+    <div class="row g-3">
+
+      <!-- LEFT: IMAGE + TABS -->
+      <div class="col-md-8">
+
+        <!-- PRODUCT MAIN -->
+        <div class="product-main">
+          <div class="row">
+
+            <!-- Image Gallery -->
+            <div class="col-md-5">
+              <div class="main-img-wrap" id="mainImgWrap">
+                <img id="mainImg" src="" alt="Emerald Bay XL Hot Tub"/>
+              </div>
+              <div class="thumb-row" id="thumbRow"></div>
+              <div class="zoom-hint">
+                Roll over image to zoom in<br/>
+                <a href="#"><i class="fa fa-search-plus"></i> + Larger View</a>
+              </div>
+            </div>
+
+            <!-- Product Info -->
+            <div class="col-md-7">
+              <div class="star-row">
+                <span class="stars">★★★★<span style="color:#ccc;">★</span></span>
+                <span style="background:#555;color:#fff;font-size:10px;padding:1px 5px;">4.1</span>
+                <a href="#reviews" class="review-link">(14 reviews)</a>
+              </div>
+              <div class="retail-price">Retail Price $2199.00</div>
+              <div class="sale-label">Sale price</div>
+              <div class="sale-price">$1979.00</div>
+              <div class="low-price"><i class="fa fa-tag"></i> Low Price Guarantee</div>
+
+              <table class="spec-table">
+                <tr><td>Size/Seating Capacity</td><td>77", 77", 32" / 6 Persons</td></tr>
+                <tr><td>Seating Design</td><td>Bucket, Lounge, Chair, Bench</td></tr>
+                <tr><td>Water Capacity / Dry Weight</td><td>365 Gallons / 573 lbs.</td></tr>
+                <tr><td>Number of Pumps</td><td>2 X 5 HP</td></tr>
+                <tr><td>Electrical</td><td>5.5 KW Heavy Heater, 220V, 50 amp /ETL Certificate</td></tr>
+              </table>
+
+              <div class="stock-line"><i class="fa fa-check-circle"></i> In Stock (available)</div>
+
+              <button class="btn-add-cart-big" onclick="addToCartDetail()">
+                <i class="fa fa-shopping-cart"></i> ADD TO CART
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- TABS -->
+        <div class="tabs-section">
+          <div class="tab-nav">
+            <button class="tab-btn active" onclick="openTab(event,'details')">Details</button>
+            <button class="tab-btn" onclick="openTab(event,'quickspecs')">Quick Specs</button>
+            <button class="tab-btn" onclick="openTab(event,'accessories')">Accessories</button>
+            <button class="tab-btn" onclick="openTab(event,'reviews')" id="reviews">Reviews</button>
+            <button class="tab-btn" onclick="openTab(event,'qa')">Q & A</button>
+          </div>
+
+          <!-- DETAILS TAB -->
+          <div class="tab-content active" id="details">
+            <div class="energy-row">Energy Star Rated - No</div>
+            <h3>Emerald Bay XL TV DVD Stereo Hot Tub with 90 Jets</h3>
+            <div style="font-size:12px;color:#555;margin-bottom:8px;">
+              The Hottub B22CS30SNS<br/>stain
+            </div>
+            <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam, ut aliquam massa nisl quis neque.</p>
+            <p>nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue.</p>
+            <p>odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat.</p>
+          </div>
+
+          <!-- QUICK SPECS TAB -->
+          <div class="tab-content" id="quickspecs">
+            <table class="specs-tbl">
+              <tr><td>Model</td><td>B22CS30SNS8</td></tr>
+              <tr><td>Size</td><td>77" x 77" x 32"</td></tr>
+              <tr><td>Seating Capacity</td><td>6 Persons</td></tr>
+              <tr><td>Number of Jets</td><td>90 Jets</td></tr>
+              <tr><td>Number of Pumps</td><td>2 x 5 HP</td></tr>
+              <tr><td>Water Capacity</td><td>365 Gallons</td></tr>
+              <tr><td>Dry Weight</td><td>573 lbs.</td></tr>
+              <tr><td>Electrical</td><td>220V, 50 amp / ETL Certificate</td></tr>
+              <tr><td>Heater</td><td>5.5 KW Heavy Heater</td></tr>
+              <tr><td>Seating Design</td><td>Bucket, Lounge, Chair, Bench</td></tr>
+              <tr><td>Energy Star Rated</td><td>No</td></tr>
+              <tr><td>Color Options</td><td>Multiple available</td></tr>
+            </table>
+          </div>
+
+          <!-- ACCESSORIES TAB -->
+          <div class="tab-content" id="accessories">
+            <h3>Available Accessories</h3>
+            <p>Enhance your hot tub experience with our range of accessories including covers, steps, lighting kits, and more. Contact us for pricing and availability.</p>
+            <table class="specs-tbl">
+              <tr><td>Cover</td><td>Standard thermal cover included</td></tr>
+              <tr><td>Steps</td><td>2-step entry steps available</td></tr>
+              <tr><td>Perimeter Lighting</td><td>LED lighting kit</td></tr>
+              <tr><td>Speakers</td><td>Premium popup speaker system</td></tr>
+              <tr><td>Waterfall</td><td>Stainless steel waterfall</td></tr>
+              <tr><td>Spa Surround</td><td>Wood or synthetic surround</td></tr>
+            </table>
+          </div>
+
+          <!-- REVIEWS TAB -->
+          <div class="tab-content" id="reviews">
+            <h3>Customer Reviews (14)</h3>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+              <span style="font-size:36px;font-weight:900;color:#333;">4.1</span>
+              <div>
+                <div style="color:#f90;font-size:18px;">★★★★<span style="color:#ccc;">★</span></div>
+                <div style="font-size:11px;color:#888;">Based on 14 reviews</div>
+              </div>
+            </div>
+            <div style="border-top:1px solid #eee;padding-top:12px;">
+              <div style="margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #f0f0f0;">
+                <div style="font-size:12px;font-weight:bold;color:#222;">Great hot tub!</div>
+                <div style="color:#f90;font-size:12px;">★★★★★</div>
+                <div style="font-size:11px;color:#888;margin-bottom:4px;">by John D. — March 2024</div>
+                <div style="font-size:12px;color:#555;">Absolutely love this hot tub. Easy to install and the jets are powerful. Great value for money.</div>
+              </div>
+              <div style="margin-bottom:12px;">
+                <div style="font-size:12px;font-weight:bold;color:#222;">Very relaxing</div>
+                <div style="color:#f90;font-size:12px;">★★★★<span style="color:#ccc;">★</span></div>
+                <div style="font-size:11px;color:#888;margin-bottom:4px;">by Sarah M. — February 2024</div>
+                <div style="font-size:12px;color:#555;">The TV and stereo system is a great addition. Perfect for evening relaxation.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q&A TAB -->
+          <div class="tab-content" id="qa">
+            <h3>Questions & Answers</h3>
+            <div style="margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid #eee;">
+              <div style="font-size:12px;font-weight:bold;color:#c00;">Q: What is the warranty on this hot tub?</div>
+              <div style="font-size:12px;color:#555;margin-top:4px;"><strong>A:</strong> This hot tub comes with a 5-year structural warranty, 2-year equipment warranty, and 1-year surface warranty.</div>
+            </div>
+            <div style="margin-bottom:14px;">
+              <div style="font-size:12px;font-weight:bold;color:#c00;">Q: Is professional installation required?</div>
+              <div style="font-size:12px;color:#555;margin-top:4px;"><strong>A:</strong> We recommend professional electrical installation. The unit itself can be set up with basic instructions provided.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: PRICE CALCULATOR + DOWNLOADS -->
+      <div class="col-md-4">
+
+        <!-- PRICE CALCULATOR -->
+        <div class="price-calc">
+          <h4>Price Calculator</h4>
+          <div class="calc-row"><label>Interior Color:</label><select onchange="updateTotal()"><option>Select...</option><option>Midnight Canyon</option><option>Desert Sand</option><option>Otter</option></select></div>
+          <div class="calc-row"><label>Outside Shell Color:</label><select onchange="updateTotal()"><option>Select...</option><option>Black Pearl</option><option>Tuscan Sun</option><option>Coastal Gray</option></select></div>
+          <div class="calc-row"><label>Circulation Pump:</label><select onchange="updateTotal()"><option>Select...</option><option>Standard (+$0)</option><option>Upgraded (+$150)</option></select></div>
+          <div class="calc-row"><label>Polar Foam:</label><select onchange="updateTotal()"><option>Select...</option><option>Standard (+$0)</option><option>Full Foam (+$200)</option></select></div>
+          <div class="calc-row"><label>Cover / Steps:</label><select onchange="updateTotal()"><option>Select...</option><option>Cover Only (+$0)</option><option>Cover + Steps (+$120)</option></select></div>
+          <div class="calc-row"><label>Extra Filter Sets:</label><select onchange="updateTotal()"><option>Select...</option><option>None (+$0)</option><option>1 Set (+$45)</option><option>2 Sets (+$80)</option></select></div>
+          <div class="calc-row"><label>Deluxe Cover Lifter:</label><select onchange="updateTotal()"><option>Select...</option><option>No (+$0)</option><option>Yes (+$180)</option></select></div>
+          <div class="calc-row"><label>Salt Water Sanitation System:</label><select onchange="updateTotal()"><option>Select...</option><option>No (+$0)</option><option>Yes (+$350)</option></select></div>
+          <div class="calc-row"><label>TV/DVD/Entertainment:</label><select onchange="updateTotal()"><option>Select...</option><option>Standard (+$0)</option><option>Upgrade (+$400)</option></select></div>
+          <div class="calc-row"><label>Backyard Delivery:</label><select onchange="updateTotal()"><option>Select...</option><option>Standard (+$0)</option><option>White Glove (+$250)</option></select></div>
+          <div class="calc-row"><label>Jets:</label><select onchange="updateTotal()"><option>Select...</option><option>90 Jets (+$0)</option><option>110 Jets (+$300)</option></select></div>
+          <div class="calc-row"><label>Perimeter Lighting:</label><select onchange="updateTotal()"><option>Select...</option><option>No (+$0)</option><option>Yes (+$220)</option></select></div>
+          <div class="calc-row"><label>Premium Popup Speakers:</label><select onchange="updateTotal()"><option>Select...</option><option>No (+$0)</option><option>Yes (+$280)</option></select></div>
+          <div class="calc-row"><label>Waterfall:</label><select onchange="updateTotal()"><option>Select...</option><option>No (+$0)</option><option>Yes (+$160)</option></select></div>
+          <div class="calc-row"><label>Spa Surround:</label><select onchange="updateTotal()"><option>Select...</option><option>No (+$0)</option><option>Wood (+$450)</option><option>Synthetic (+$300)</option></select></div>
+          <div class="calc-row"><label>Quantity:</label><input type="number" value="1" min="1" onchange="updateTotal()" id="qtyInput"/></div>
+
+          <div class="total-price-box">
+            <div class="total-label">Total Price:</div>
+            <div class="total-amount" id="totalPrice">$650.00</div>
+          </div>
+          <button class="btn-calc-cart" onclick="addToCartCalc()">
+            <i class="fa fa-shopping-cart"></i> ADD TO CART
+          </button>
+        </div>
+
+        <!-- DOWNLOAD RESOURCES -->
+        <div class="download-box">
+          <h4>Download Resources</h4>
+          <a href="#" class="download-link"><i class="fa fa-file-pdf" style="color:#c00;"></i> Full Line Brochure</a>
+          <a href="#" class="download-link"><i class="fa fa-file-pdf" style="color:#c00;"></i> Owner's Manual</a>
+          <a href="#" class="download-link"><i class="fa fa-file-pdf" style="color:#c00;"></i> Specifications Sheet</a>
+          <div class="pdf-reader">
+            <i class="fa fa-file-pdf" style="font-size:28px;color:#c00;"></i>
+            <span>Get Adobe Reader to view PDF files</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CUSTOMERS WHO VIEWED -->
+    <div class="customers-section mt-3">
+      <h3>Customers Who&nbsp; Viewed This Item Also</h3>
+      <div class="product-carousel">
+        <button class="carousel-arrow" id="prevBtn">&#8249;</button>
+        <div class="product-items" id="productItems"></div>
+        <button class="carousel-arrow" id="nextBtn">&#8250;</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- BRANDS BAR -->
+<div class="brands-bar">
+  <div class="container-fluid px-3">
+    <div class="row align-items-center g-2">
+      <div class="col-3 d-flex justify-content-center">
+        <div class="save-banner">
+          ON THE TOP SPA BRANDS<br/>
+          <span class="save-amount">SAVE $1,000'S</span>
+          <span style="font-size:10px;">HUGE DISCOUNTS</span><br/>
+          <span style="color:#1a3;font-weight:900;background:#ffe;padding:2px 6px;font-size:10px;display:inline-block;margin-top:2px;">SHOP EARLY FOR THE BEST SELECTION!</span>
+        </div>
+      </div>
+      <div class="col-3 d-flex justify-content-center">
+        <div style="text-align:center;">
+          <i class="fa fa-fish" style="font-size:28px;color:#1a7ab5;"></i><br/>
+          <span style="font-size:20px;letter-spacing:2px;color:#1a7ab5;font-family:Georgia,serif;font-style:italic;">OCEANIC</span><span style="font-size:20px;color:#1a7ab5;">Spa</span>
+        </div>
+      </div>
+      <div class="col-3 d-flex justify-content-center">
+        <span style="font-size:22px;font-weight:300;color:#888;letter-spacing:1px;"><span style="color:#e85;">✿</span> Caldera<span style="font-weight:bold;color:#555;">Spas</span></span>
+      </div>
+      <div class="col-3 d-flex justify-content-center">
+        <div style="text-align:center;">
+          <span style="font-size:22px;font-weight:300;color:#2a7a2a;letter-spacing:1px;">🌴 <span style="color:#2a7a2a;font-style:italic;">Island</span><span style="font-weight:bold;color:#555;">Spas</span></span>
+          <div style="font-size:10px;color:#888;">by ARTESIAN</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="main-footer">
+  <div class="container-fluid px-3">
+    <div class="row">
+      <div class="col-md-3 footer-col mb-3">
+        <h5>Contact Us</h5>
+        <p>yoursitename.com</p>
+        <p>CALL 24/7: 888 · 201 · 8899</p>
+        <p>Your Address:<br>Street<br>State &amp; Zip Code<br>City &amp; Country<br>Email: servicemail@yoursitename.com</p>
+        <div class="social-icons">
+          <a href="#" class="social-icon si-tw"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon si-fb"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon si-li"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-icon si-gp"><i class="fab fa-google-plus-g"></i></a>
+          <a href="#" class="social-icon si-yt"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-icon si-pi"><i class="fab fa-pinterest-p"></i></a>
+        </div>
+      </div>
+      <div class="col-md-3 footer-col mb-3">
+        <h5>Information</h5>
+        <a href="#">ABOUT US</a><a href="#">CUSTOMER SERVICE</a>
+        <a href="#">PRIVACY POLICY</a><a href="#">SITE MAP</a>
+        <a href="#">SEARCH TERMS</a><a href="#">CONATACT US</a><a href="#">ABOUT US</a>
+      </div>
+      <div class="col-md-3 footer-col mb-3">
+        <h5>My Account</h5>
+        <a href="login_page.html">SIGN IN</a>
+        <a href="#">VIEW CART</a>
+        <a href="#">MY WISHLIST</a>
+      </div>
+      <div class="col-md-3 footer-col mb-3">
+        <h5>Signup For A News Letter</h5>
+        <p>SIGN UP FOR OUR NEWS LETTER</p>
+        <input type="email" class="newsletter-input" id="newsletterEmail" placeholder=""/>
+        <button onclick="subscribeNewsletter()" style="background:#555;color:#fff;border:none;padding:5px 14px;font-size:12px;cursor:pointer;margin-bottom:12px;">Subscribe</button>
+        <div style="font-size:11px;color:#aaa;margin-bottom:6px;font-weight:bold;letter-spacing:1px;">PAYMENT SOLUTIONS</div>
+        <div class="payment-icons">
+          <div class="pay-icon" style="background:#1a1f8f;color:#fff;">VISA</div>
+          <div class="pay-icon" style="background:#eb001b;color:#fff;">MC</div>
+          <div class="pay-icon" style="background:#007bc1;color:#fff;">AMEX</div>
+          <div class="pay-icon" style="background:#1a1f8f;color:#fff;">VISA</div>
+          <div class="pay-icon" style="background:#009cde;color:#fff;">PayPal</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2014 Hottubspaservice.com. All Rights Reserved.</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script>
+
+  // ── INLINE SVG IMAGES ──
+  function makeSVG(c1, c2, w, h, label) {
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}">
+      <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="${c1}"/><stop offset="100%" stop-color="${c2}"/>
+      </linearGradient></defs>
+      <rect width="${w}" height="${h}" fill="url(#g)" rx="4"/>
+      <ellipse cx="${w/2}" cy="${h*0.62}" rx="${w*0.3}" ry="${h*0.2}" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+      <ellipse cx="${w/2}" cy="${h*0.58}" rx="${w*0.22}" ry="${h*0.14}" fill="rgba(100,180,255,0.25)"/>
+      <circle cx="${w*0.35}" cy="${h*0.56}" r="${w*0.035}" fill="rgba(255,255,255,0.55)"/>
+      <circle cx="${w/2}" cy="${h*0.46}" r="${w*0.035}" fill="rgba(255,255,255,0.55)"/>
+      <circle cx="${w*0.65}" cy="${h*0.56}" r="${w*0.035}" fill="rgba(255,255,255,0.55)"/>
+      <circle cx="${w*0.42}" cy="${h*0.68}" r="${w*0.03}" fill="rgba(255,255,255,0.5)"/>
+      <circle cx="${w*0.58}" cy="${h*0.68}" r="${w*0.03}" fill="rgba(255,255,255,0.5)"/>
+      <circle cx="${w*0.46}" cy="${h*0.38}" r="${w*0.018}" fill="rgba(255,255,255,0.6)"/>
+      <circle cx="${w*0.54}" cy="${h*0.32}" r="${w*0.013}" fill="rgba(255,255,255,0.5)"/>
+      <text x="${w/2}" y="${h*0.9}" font-family="Arial" font-size="${w*0.07}" fill="rgba(255,255,255,0.7)" text-anchor="middle">${label}</text>
+    </svg>`;
+    return 'data:image/svg+xml;base64,' + btoa(svg);
+  }
+
+  const imgs = [
+    makeSVG('#1a4a6e','#0d2d4a', 300, 240, 'Emerald Bay XL'),
+    makeSVG('#2a5a7e','#1a3d5a', 300, 240, 'Side View'),
+    makeSVG('#1e5c3a','#0d3320', 300, 240, 'Interior View'),
+    makeSVG('#4a3a1a','#2d200d', 300, 240, 'Detail View'),
+  ];
+
+  // Set main image
+  $('#mainImg').attr('src', imgs[0]);
+
+  // Build thumbnails
+  imgs.forEach((src, i) => {
+    const $th = $(`<div class="thumb-item ${i===0?'active':''}"><img src="${src}" alt="view ${i+1}"/></div>`);
+    $th.on('click', function() {
+      $('#mainImg').attr('src', src);
+      $('.thumb-item').removeClass('active');
+      $(this).addClass('active');
+    });
+    $('#thumbRow').append($th);
+  });
+
+  // ── TABS ──
+  function openTab(e, id) {
+    $('.tab-content').removeClass('active');
+    $('.tab-btn').removeClass('active');
+    $('#' + id).addClass('active');
+    $(e.currentTarget).addClass('active');
+  }
+
+  // ── PRICE CALCULATOR ──
+  function updateTotal() {
+    let base = 650;
+    $('select').each(function() {
+      const val = $(this).val();
+      const match = val.match(/\+\$(\d+)/);
+      if (match) base += parseInt(match[1]);
+    });
+    const qty = parseInt($('#qtyInput').val()) || 1;
+    $('#totalPrice').text('$' + (base * qty).toLocaleString() + '.00');
+  }
+
+  function addToCartDetail() {
+    alert('Emerald Bay XL Hot Tub has been added to your cart!');
+  }
+  function addToCartCalc() {
+    alert('Item added to cart with selected options! Total: ' + $('#totalPrice').text());
+  }
+
+  // ── PRODUCT CAROUSEL ──
+  function svgThumb(c1, c2) {
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+      <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="${c1}"/><stop offset="100%" stop-color="${c2}"/>
+      </linearGradient></defs>
+      <rect width="64" height="64" fill="url(#g)" rx="3"/>
+      <ellipse cx="32" cy="38" rx="18" ry="10" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+      <ellipse cx="32" cy="35" rx="14" ry="7" fill="rgba(100,180,255,0.3)"/>
+      <circle cx="22" cy="34" r="2.5" fill="rgba(255,255,255,0.6)"/>
+      <circle cx="32" cy="29" r="2.5" fill="rgba(255,255,255,0.6)"/>
+      <circle cx="42" cy="34" r="2.5" fill="rgba(255,255,255,0.6)"/>
+    </svg>`;
+    return 'data:image/svg+xml;base64,' + btoa(svg);
+  }
+
+  const carouselProducts = [
+    { price:'$2,549.15', name:'Bosch 22 Cu. Ft Stainless Refrigerator', sku:'B22CS30SNS5', img: svgThumb('#1a4a6e','#0d2d4a') },
+    { price:'$2,549.15', name:'Bosch 22 Cu. Ft Stainless Refrigerator', sku:'B22CS30SNS5', img: svgThumb('#1e5c3a','#0d3320') },
+    { price:'$2,549.15', name:'Bosch 22 Cu. Ft Stainless Refrigerator', sku:'B22CS30SNS5', img: svgThumb('#4a3a1a','#2d200d') },
+    { price:'$2,549.15', name:'Bosch 22 Cu. Ft Stainless Refrigerator', sku:'B22CS30SNS5', img: svgThumb('#3a1a4a','#200d2d') },
+    { price:'$2,549.15', name:'Bosch 22 Cu. Ft Stainless Refrigerator', sku:'B22CS30SNS5', img: svgThumb('#1a4a6e','#0d2d4a') },
+    { price:'$2,549.15', name:'Bosch 22 Cu. Ft Stainless Refrigerator', sku:'B22CS30SNS5', img: svgThumb('#1e5c3a','#0d3320') },
+  ];
+
+  let carouselIndex = 0;
+  const visibleCount = 4;
+
+  function renderCarousel() {
+    const $c = $('#productItems').empty();
+    carouselProducts.slice(carouselIndex, carouselIndex + visibleCount).forEach(p => {
+      $c.append(`<div class="product-item">
+        <img src="${p.img}" alt="${p.name}"/>
+        <div class="product-price">${p.price}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-sku">${p.sku}</div>
+      </div>`);
+    });
+  }
+
+  $('#nextBtn').on('click', function() { if (carouselIndex + visibleCount < carouselProducts.length) { carouselIndex++; renderCarousel(); } });
+  $('#prevBtn').on('click', function() { if (carouselIndex > 0) { carouselIndex--; renderCarousel(); } });
+  renderCarousel();
+
+  // ── SEARCH & NEWSLETTER ──
+  function doSearch() {
+    const q = $('#searchInput').val().trim();
+    if (q) alert('Searching for: ' + q);
+    else alert('Please enter a search term.');
+  }
+  function subscribeNewsletter() {
+    const email = $('#newsletterEmail').val().trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      alert('Please enter a valid email.');
+    } else {
+      alert('Thank you for subscribing!');
+      $('#newsletterEmail').val('');
+    }
+  }
+
+</script>
+</body>
+</html>
