@@ -6,7 +6,7 @@ function ForgotPasswordPage() {
       <p className="spa-breadcrumbs">Home &gt; Forgot Your Password</p>
       <h2 className="spa-title">Forget Your Password</h2>
       <h3 className="spa-section-title">User Account Details</h3>
-      <p className="spa-copy">Please enter your email address below to receive your password.</p>
+      <p className="spa-copy">Please enter your email address below to receive your password</p>
       <div style={{ maxWidth: '320px', marginTop: '16px' }}>
         <form className="spa-form">
           <div className="spa-form-row">

@@ -5,7 +5,7 @@ function EditShippingAddressPage() {
     <HottubLayout activePath="/contact">
       <p className="spa-breadcrumbs">Home &gt; My Account &gt; Edit Shipping Address</p>
       <h2 className="spa-title">Edit Shipping Address</h2>
-      <p className="spa-copy">Please fill this form below to update your profile details.</p>
+      <p className="spa-copy">Please fill this form below to update your profile details</p>
       <div style={{ maxWidth: '360px', marginTop: '16px' }}>
         <form className="spa-form">
           {['First Name', 'Last Name', 'Street', 'Phone', 'City', 'State', 'Zip Code', 'Country'].map((field) => (

@@ -43,12 +43,12 @@ function App() {
     return <EditShippingAddressPage />;
   }
 
-  if (pathname === '/forgot-password') {
-    return <ForgotPasswordPage />;
-  }
-
   if (pathname === '/login') {
     return <LoginPage />;
+  }
+
+   if (pathname === '/forgot-password') {
+    return <ForgotPasswordPage />;
   }
 
   if (pathname === '/my-account') {

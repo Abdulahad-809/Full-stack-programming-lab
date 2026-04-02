@@ -23,7 +23,7 @@ function LoginPage() {
           <ul className="spa-copy" style={{ paddingLeft: '16px', margin: '8px 0 14px' }}>
             <li>Faster shopping experience</li>
             <li>Track order status</li>
-            <li>Save multiple shipping addresses</li>
+            <li>Save  multiple shipping addresses</li>
           </ul>
           <a href="/register" className="spa-button" style={{ display: 'inline-grid', placeItems: 'center', width: '140px' }}>Create New Account</a>
         </section>

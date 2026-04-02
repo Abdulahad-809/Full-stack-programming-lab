@@ -12,7 +12,7 @@ function AboutPage() {
           <h3 className="spa-section-title">Welcome to the Company</h3>
           <p className="spa-copy">
             This is Photoshop&apos;s version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
-            Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.
+            Aenean sollicitudin, lorem quis bibendum auctor nisi elit consequat ipsum, nec sagittis sem nibh id elit.
           </p>
           <p className="spa-copy">
             Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.

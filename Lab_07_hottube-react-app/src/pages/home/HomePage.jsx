@@ -25,7 +25,7 @@ function HomePage() {
       </section>
 
       <section className="spa-home-promos">
-        <div className="spa-promo-card">5-7 PERSON SPA</div>
+        <div className="spa-promo-card">5-8 PERSON SPA</div>
         <div className="spa-promo-card">TV THEATER SPA</div>
         <div className="spa-promo-card spa-promo-card--red">
           <strong>SAVE 50%</strong>
