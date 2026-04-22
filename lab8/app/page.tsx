@@ -23,12 +23,18 @@ export default function Home() {
           >
             Products
           </Link>
-          <Link
-            href="/contact"
-            className="rounded-md bg-blue-700 px-4 py-2 text-white hover:bg-blue-800"
-          >
-            Contact
-          </Link>
+        <Link
+          href="/contact"
+          className="rounded-md bg-blue-700 px-4 py-2 text-white hover:bg-blue-800"
+        >
+          Contact
+        </Link>
+        <Link
+          href="/dynamic"
+          className="rounded-md bg-blue-700 px-4 py-2 text-white hover:bg-blue-800"
+        >
+          Dynamic
+        </Link>
         </div>
       </section>
 
@@ -49,6 +55,12 @@ export default function Home() {
           <h2 className="font-semibold">Contact</h2>
           <p className="mt-2 text-sm text-slate-600">
             Fill out a simple contact form.
+          </p>
+        </div>
+        <div className="rounded-md border bg-white p-5">
+          <h2 className="font-semibold">Dynamic</h2>
+          <p className="mt-2 text-sm text-slate-600">
+            Try a component that updates on the page.
           </p>
         </div>
       </section>
