@@ -81,3 +81,9 @@ app.get('/about', (req, res) => {
 app.get('/contact', (req, res) => {
     res.send('<h1>Contact Page</h1><p>Email: info@example.com</p><p><a href="/home">Home</a> | <a href="/about">About</a> | <a href="/">Students</a></p>');
 });
+
+// Task 3: Dynamic User Page
+app.get('/user/:name', (req, res) => {
+    const userName = req.params.name;
+    res.send(`<h1>Hello ${userName}</h1><p><a href="/home">Home</a> | <a href="/about">About</a> | <a href="/contact">Contact</a> | <a href="/">Students</a></p>`);
+});
