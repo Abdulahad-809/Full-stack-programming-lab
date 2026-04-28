@@ -87,3 +87,39 @@ app.get('/user/:name', (req, res) => {
     const userName = req.params.name;
     res.send(`<h1>Hello ${userName}</h1><p><a href="/home">Home</a> | <a href="/about">About</a> | <a href="/contact">Contact</a> | <a href="/">Students</a></p>`);
 });
+
+// Task 4: Simple HTML Page Renderer
+app.get('/page', (req, res) => {
+    const html = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple HTML Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        h1 { color: #333; }
+        ul { line-height: 1.8; }
+    </style>
+</head>
+<body>
+    <h1>Welcome to My Page</h1>
+    <p>This is a simple HTML page rendered using Express.</p>
+    <h2>Features:</h2>
+    <ul>
+        <li>Title element in head</li>
+        <li>Paragraph text</li>
+        <li>Simple unordered list</li>
+    </ul>
+    <p><a href="/home">Home</a> | <a href="/about">About</a> | <a href="/contact">Contact</a> | <a href="/">Students</a></p>
+</body>
+</html>
+    `;
+    res.send(html);
+});
