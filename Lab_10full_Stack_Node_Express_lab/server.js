@@ -64,3 +64,20 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
+
+// Task 2: Simple Message Routes System
+
+// Route /home
+app.get('/home', (req, res) => {
+    res.send('<h1>Welcome Home</h1><p><a href="/about">About</a> | <a href="/contact">Contact</a> | <a href="/">Students</a></p>');
+});
+
+// Route /about
+app.get('/about', (req, res) => {
+    res.send('<h1>About Page</h1><p>This is the about page.</p><p><a href="/home">Home</a> | <a href="/contact">Contact</a> | <a href="/">Students</a></p>');
+});
+
+// Route /contact
+app.get('/contact', (req, res) => {
+    res.send('<h1>Contact Page</h1><p>Email: info@example.com</p><p><a href="/home">Home</a> | <a href="/about">About</a> | <a href="/">Students</a></p>');
+});
