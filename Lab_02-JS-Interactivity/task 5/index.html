@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f4f4f4;
+            color: #333;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 4px;
+            box-sizing: border-box;
+        }
+
+        .error {
+            color: #b00;
+            font-size: 0.9em;
+            margin-top: 2px;
+        }
+
+        .success {
+            color: #060;
+            font-size: 1em;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Register</h1>
+    <form id="regForm" novalidate>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" />
+        <div class="error" id="nameError"></div>
+
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" />
+        <div class="error" id="emailError"></div>
+
+        <label for="age">Age</label>
+        <input type="number" id="age" name="age" />
+        <div class="error" id="ageError"></div>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" />
+        <div class="error" id="passwordError"></div>
+
+        <button type="submit">Submit</button>
+        <div class="success" id="successMessage"></div>
+    </form>
+
+    <script>
+        const form = document.getElementById('regForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const ageInput = document.getElementById('age');
+        const passwordInput = document.getElementById('password');
+
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+        const ageError = document.getElementById('ageError');
+        const passwordError = document.getElementById('passwordError');
+        const successMessage = document.getElementById('successMessage');
+
+        function validateName() {
+            const value = nameInput.value.trim();
+            if (value === '') {
+                nameError.textContent = 'Name cannot be empty';
+                return false;
+            }
+            nameError.textContent = '';
+            return true;
+        }
+
+        function validateEmail() {
+            const value = emailInput.value.trim();
+            if (value.indexOf('@') === -1) {
+                emailError.textContent = 'Email must contain @';
+                return false;
+            }
+            emailError.textContent = '';
+            return true;
+        }
+
+        function validateAge() {
+            const age = parseInt(ageInput.value, 10);
+            if (isNaN(age) || age < 18 || age > 60) {
+                ageError.textContent = 'Age must be between 18 and 60';
+                return false;
+            }
+            ageError.textContent = '';
+            return true;
+        }
+
+        function validatePassword() {
+            const pwd = passwordInput.value;
+            if (pwd.length < 6) {
+                passwordError.textContent = 'Password must be at least 6 characters';
+                return false;
+            }
+            passwordError.textContent = '';
+            return true;
+        }
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const validName = validateName();
+            const validEmail = validateEmail();
+            const validAge = validateAge();
+            const validPassword = validatePassword();
+
+            if (validName && validEmail && validAge && validPassword) {
+                successMessage.textContent = 'All fields are valid!';
+                if (confirm('Submit the form?')) {
+                    alert('Form submitted successfully.');
+                    // optionally reset
+                    form.reset();
+                } else {
+                    successMessage.textContent = 'Submission cancelled.';
+                }
+            } else {
+                successMessage.textContent = '';
+            }
+        });
+
+        // optional live validation
+        nameInput.addEventListener('input', validateName);
+        emailInput.addEventListener('input', validateEmail);
+        ageInput.addEventListener('input', validateAge);
+        passwordInput.addEventListener('input', validatePassword);
+    </script>
+</body>
+</html>
