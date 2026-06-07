@@ -1,0 +1,17 @@
+module.exports = [
+  { name: "Sara Ahmed", email: "sara@example.com", phone: "+92 300 1110001", company: "Nexa Labs", status: "Lead", source: "Website", value: 85000, notes: "Interested in the premium package." },
+  { name: "Ali Raza", email: "ali@example.com", phone: "+92 300 1110002", company: "Vertex Solutions", status: "Active", source: "Referral", value: 145000, notes: "Quarterly account review due." },
+  { name: "Ayesha Khan", email: "ayesha@example.com", phone: "+92 300 1110003", company: "BrightPath", status: "Active", source: "Phone", value: 210000, notes: "Long-term services customer." },
+  { name: "Hamza Malik", email: "hamza@example.com", phone: "+92 300 1110004", company: "CloudPeak", status: "Inactive", source: "Email", value: 45000, notes: "Follow up next month." },
+  { name: "Fatima Noor", email: "fatima@example.com", phone: "+92 300 1110005", company: "PixelCraft", status: "Lead", source: "Social Media", value: 125000, notes: "Requested a product demo." },
+  { name: "Usman Tariq", email: "usman@example.com", phone: "+92 300 1110006", company: "Orbit Systems", status: "Active", source: "Website", value: 320000, notes: "High-value enterprise customer." },
+  { name: "Zainab Iqbal", email: "zainab@example.com", phone: "+92 300 1110007", company: "Greenline", status: "Lead", source: "Referral", value: 98000, notes: "Proposal shared." },
+  { name: "Bilal Hussain", email: "bilal@example.com", phone: "+92 300 1110008", company: "DataBridge", status: "Inactive", source: "Other", value: 30000, notes: "Paused due to budget." },
+  { name: "Hira Siddiqui", email: "hira@example.com", phone: "+92 300 1110009", company: "Northstar Media", status: "Active", source: "Social Media", value: 175000, notes: "Renewal expected this semester." },
+  { name: "Omar Farooq", email: "omar@example.com", phone: "+92 300 1110010", company: "Apex Retail", status: "Lead", source: "Phone", value: 115000, notes: "Needs a custom invoice." },
+  { name: "Mariam Saleem", email: "mariam@example.com", phone: "+92 300 1110011", company: "Nova Health", status: "Active", source: "Email", value: 260000, notes: "Monthly support contract." },
+  { name: "Daniyal Shah", email: "daniyal@example.com", phone: "+92 300 1110012", company: "UrbanWorks", status: "Inactive", source: "Website", value: 55000, notes: "No response after follow-up." },
+  { name: "Mehwish Aslam", email: "mehwish@example.com", phone: "+92 300 1110013", company: "Lumina Studio", status: "Lead", source: "Referral", value: 75000, notes: "Evaluating service options." },
+  { name: "Saad Qureshi", email: "saad@example.com", phone: "+92 300 1110014", company: "CoreStack", status: "Active", source: "Other", value: 195000, notes: "Implementation in progress." },
+  { name: "Noor Bukhari", email: "noor@example.com", phone: "+92 300 1110015", company: "Elevate Learning", status: "Lead", source: "Social Media", value: 90000, notes: "Call scheduled for Friday." },
+];
